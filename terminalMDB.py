@@ -29,7 +29,6 @@ def movieSearch(title):
     xml = xml.getroot()
     for B in xml.findall('Movie'):
         apicall = retrieveMovie(B.get('Title'))
-        printInfo(apicall)
     return xml
 
 
