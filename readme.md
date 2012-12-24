@@ -18,7 +18,9 @@ TerminalMDB can be used with one of two flags:
 ##Notes
 
 Requires Python 2.7+
+
 Tested on OS X 10.8
+
 Cool things can be done with data returned from **TerminalMdB**. Use your imagination!
 
 ##License
