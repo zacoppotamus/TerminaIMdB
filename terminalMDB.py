@@ -3,7 +3,6 @@
 import urllib
 import argparse
 from xml.etree import ElementTree
-from termcolor import colored
 import sys
 
 def retrieveMovie (title):
@@ -32,10 +31,10 @@ def movieSearch (title):
 
 def printInfo(xml):
 	for B in xml.findall('movie'):
-			print colored("\n%s (%s) || %s || %s\n" %(B.get('title'),B.get('year'),
-				B.get('runtime'),B.get('imdbRating')),'red')
-			print colored("Director: %s\nActors: %s\n" %(B.get('director'),B.get('actors')), 'red')
-			print colored("%s\n" %(B.get('plot')),'red')
+			print "\n%s (%s) || %s || %s\n" %(B.get('title'),B.get('year'),
+				B.get('runtime'),B.get('imdbRating'))
+			print "Director: %s\nActors: %s\n" %(B.get('director'),B.get('actors'))
+			print "%s\n" %(B.get('plot'))
 
 if __name__=='__main__':
 	parser=argparse.ArgumentParser(description='Command-Line Interface for the IMdB')
