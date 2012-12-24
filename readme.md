@@ -15,6 +15,9 @@ TerminalMDB can be used with one of two flags:
 
 ```imdb -s "bar" => search by title and return all results```
 
+
+![Example](https://github.com/zacoppotamus/TerminaIMdB/raw/master/Screenshot.png)
+
 ##Notes
 
 Requires Python 2.7+
