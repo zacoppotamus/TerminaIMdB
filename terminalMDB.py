@@ -48,15 +48,10 @@ if __name__ == '__main__':
     parser.add_argument("-s", help="Search and return results")
 
     args = parser.parse_args()
-    choices = ["None"]
-    try:
-        choices[0] = sys.argv[1]
-        title = sys.argv[2]
-    except:
-        parser.print_usage()
-        sys.exit()
 
-    if choices[0] == "-t":
-        retrieveMovie(title)
+    if args.t:
+        retrieveMovie(args.t)
+    elif args.s:
+        movieSearch(args.s)
     else:
-        movieSearch(title)
+        parser.print_help()
