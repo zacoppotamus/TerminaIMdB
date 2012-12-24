@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import urllib
 import argparse
@@ -40,9 +40,9 @@ def printInfo(xml):
         print "Director: %s\nActors: %s\n" % (B.get('director'), B.get('actors'))
         print "%s\n" % (B.get('plot'))
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description='Command-Line Interface for the IMdB')
+
+def main():
+    parser = argparse.ArgumentParser(description='Command-Line Interface for the IMdB')
 
     parser.add_argument("-t", help="Search by title. Return first result")
     parser.add_argument("-s", help="Search and return results")
@@ -60,3 +60,7 @@ if __name__ == '__main__':
         retrieveMovie(title)
     else:
         movieSearch(title)
+
+
+if __name__ == '__main__':
+    main()
