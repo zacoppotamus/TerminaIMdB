@@ -32,7 +32,8 @@ def movieSearch (title):
 
 def printInfo(xml):
 	for B in xml.findall('movie'):
-			print colored("\n%s (%s) || %s || %s\n" %(B.get('title'),B.get('year'),B.get('runtime'),B.get('imdbRating')),'red')
+			print colored("\n%s (%s) || %s || %s\n" %(B.get('title'),B.get('year'),
+				B.get('runtime'),B.get('imdbRating')),'red')
 			print colored("Director: %s\nActors: %s\n" %(B.get('director'),B.get('actors')), 'red')
 			print colored("%s\n" %(B.get('plot')),'red')
 
@@ -43,42 +44,17 @@ if __name__=='__main__':
 	parser.add_argument("-s", help="Search and return results")
 
 	args=parser.parse_args()
-	choices={}
-	keys=['t','s']
-	
-	for b in keys:
-		if args.__getattribute__(b): choices[b]=args.__getattribute__(b)
-
-	print choices 
-
-	if len(choices)==0:
+	choices=["None"]
+	try:
+		choices[0]=sys.argv[1]
+		title=sys.argv[2]
+	except:
 		parser.print_usage()
 		sys.exit()
 
-	title=raw_input("Movie: ")
-	retrieveMovie(title)
+	if choices[0]=="-t":	
+		retrieveMovie(title)
+	else:
+		movieSearch(title)
+
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
