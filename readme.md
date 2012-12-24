@@ -7,7 +7,7 @@ basic movie information.
 
 It would be useful to set up an alias for the command:
 
-```alias imdb = python path/to/file.py```
+```alias imdb = python path/to/terminalMDB.py```
 
 TerminalMDB can be used with one of two flags:
 
