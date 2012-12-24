@@ -3,18 +3,21 @@
 import urllib
 import argparse
 from xml.etree import ElementTree
-import sys
+from sys import exit
 
 
-def retrieveMovie(title):
+def retrieveMovie(title, isID):
     title = urllib.quote(title.encode("utf8"))
-    URL = "http://www.omdbapi.com/?r=xml&plot=full&t=%s" % title
+    if isID==True:
+        URL="http://www.omdbapi.com/?r=xml&plot=full&i=%s" % title
+    else:
+        URL = "http://www.omdbapi.com/?r=xml&plot=full&t=%s" % title
     xml = ElementTree.parse(urllib.urlopen(URL))
     # fall back to movie search if no movie is found
     for A in xml.iter('root'):
         if (A.get('response') == 'False'):
             print "Movie not found!"
-            sys.exit()
+            exit()
     xml = xml.getroot()
     printInfo(xml)
     return xml
@@ -28,7 +31,7 @@ def movieSearch(title):
     xml = ElementTree.parse(urllib.urlopen(URL))
     xml = xml.getroot()
     for B in xml.findall('Movie'):
-        apicall = retrieveMovie(B.get('Title'))
+        apicall = retrieveMovie(B.get('imdbID'), True)
     return xml
 
 
@@ -44,12 +47,15 @@ if __name__ == '__main__':
         description='Command-Line Interface for the IMdB')
 
     parser.add_argument("-t", help="Search by title. Return first result")
+    parser.add_argument("-i", help="Search by id")
     parser.add_argument("-s", help="Search and return results")
 
     args = parser.parse_args()
 
     if args.t:
-        retrieveMovie(args.t)
+        retrieveMovie(args.t, False)
+    elif args.i:
+        retrieveMovie(args.i, True)
     elif args.s:
         movieSearch(args.s)
     else:
