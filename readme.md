@@ -1,13 +1,17 @@
 #TerminalMdB#
 
-**TerminalMdB** is a *NIX command-line interface for the IMdB. It makes use of the excellent API over at www.omdbapi.com to retrieve
+**TerminalMdB** (http://pypi.python.org/pypi/terminalmdb/0.0.2) is a *NIX command-line interface for the IMdB. It makes use of the excellent API over at www.omdbapi.com to retrieve
 basic movie information.
 
 ##Usage
 
-It would be useful to set up an alias for the command:
+Either set up an alias:
 
 ```alias imdb = python path/to/terminalMDB.py```
+
+Or preferably use [pip](http://www.pip-installer.org/en/latest/installing.html):
+
+```pip install terminalmdb```
 
 TerminalMDB can be used with one of two flags:
 
@@ -25,6 +29,12 @@ Requires Python 2.7+
 Tested on OS X 10.8
 
 Cool things can be done with data returned from **TerminalMdB**. Use your imagination!
+
+##To-Do
+
+* Movie showtimes near current location
+
+* Actor Search
 
 ##License
 
