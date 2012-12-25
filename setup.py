@@ -6,21 +6,21 @@ from setuptools import setup
 DIR=os.path.dirname(__file__)
 
 setup(
-    name='TerminalMdB',
+    name='terminalmdb',
     version='0.0.1',
     description='CLI for IMDB',
     long_description=open(os.path.join(DIR, 'readme.md')).read(),
     author='Zac Ioannidis',
-    #author_email='',
-    #license=open('LICENSE').read(),
+    author_email='me@izac.us',
+    license='MIT',
     url='https://github.com/zacoppotamus/TerminaIMdB',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Other Environment',
         'License :: OSI Approved :: MIT License',
     ],
-    py_modules=['terminalMDB'],
+    py_modules=['terminalmdb'],
     entry_points={
         'console_scripts':
-        ['imdb=terminalMDB:main'],
+        ['imdb=terminalmdb:main'],
     })
