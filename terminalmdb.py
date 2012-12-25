@@ -11,8 +11,8 @@ def retrieveMovie(title):
     URL = "http://www.omdbapi.com/?r=xml&plot=full&t=%s" % title
     xml = ElementTree.parse(urllib.urlopen(URL))
     # fall back to movie search if no movie is found
-    for A in xml.iter('root'):
-        if (A.get('response') == 'False'):
+    for node in xml.iter('root'):
+        if node.get('response') == 'False':
             print "Movie not found!"
             sys.exit()
     xml = xml.getroot()
@@ -27,17 +27,18 @@ def movieSearch(title):
     URL = "http://www.omdbapi.com/?r=xml&s=%s" % title
     xml = ElementTree.parse(urllib.urlopen(URL))
     xml = xml.getroot()
-    for B in xml.findall('Movie'):
-        apicall = retrieveMovie(B.get('Title'))
+    for movie in xml.findall('Movie'):
+        apicall = retrieveMovie(movie.get('Title'))
     return xml
 
 
 def printInfo(xml):
-    for B in xml.findall('movie'):
-        print "\n%s (%s) || %s || %s\n" % (B.get('title'), B.get('year'),
-                                           B.get('runtime'), B.get('imdbRating'))
-        print "Director: %s\nActors: %s\n" % (B.get('director'), B.get('actors'))
-        print "%s\n" % (B.get('plot'))
+    for movie in xml.findall('movie'):
+        print "{nl}{0} ({1}) || {2} || {3}{nl}".format(movie.get('title'), movie.get('year'),
+                                                       movie.get('runtime'), movie.get('imdbRating'),
+                                                       nl='\n')
+        print "Director: {0}{nl}Actors: {1}{nl}".format(movie.get('director'), movie.get('actors'), nl='\n')
+        print movie.get('plot'), '\n'
 
 
 def main():
