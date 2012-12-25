@@ -6,7 +6,7 @@ from setuptools import setup
 DIR=os.path.dirname(__file__)
 
 setup(
-    name='TerminalMdB',
+    name='terminalmdb',
     version='0.0.2',
     description='CLI for IMDB',
     long_description=open(os.path.join(DIR, 'readme.md')).read(),
@@ -19,8 +19,8 @@ setup(
         'Environment :: Other Environment',
         'License :: OSI Approved :: MIT License',
     ],
-    py_modules=['terminalMDB'],
+    py_modules=['terminalmdb'],
     entry_points={
         'console_scripts':
-        ['imdb=terminalMDB:main'],
+        ['imdb=terminalmdb:main'],
     })
