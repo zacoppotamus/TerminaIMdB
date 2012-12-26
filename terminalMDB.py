@@ -33,16 +33,16 @@ def movieSearch(xml):
     xml = xml.getroot()
     print xml
     for B in xml.findall('Movie'):
-        apicall = retrieveMovie(getXML(i = B.get('imdbID')))
+        apicall = retrieveMovie(getXML(i=B.get('imdbID')))
     return xml
 
 
 def printInfo(xml):
     for B in xml.findall('movie'):
         print "\n%s (%s) || %s || %s || %s\n" % (B.get('title'), B.get('year'),
-                                           B.get('runtime'),
-                                           B.get('imdbRating'),
-                                           B.get('imdbID'))
+                                                 B.get('runtime'),
+                                                 B.get('imdbRating'),
+                                                 B.get('imdbID'))
         print "Director: %s\nActors: %s\n" % (B.get('director'),
                                               B.get('actors'))
         print "%s\n" % (B.get('plot'))
@@ -59,10 +59,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.t:
-        retrieveMovie(getXML(t = args.t))
+        retrieveMovie(getXML(t=args.t))
     elif args.i:
-        retrieveMovie(getXML(i = args.i))
+        retrieveMovie(getXML(i=args.i))
     elif args.s:
-        movieSearch(getXML(s = args.s))
+        movieSearch(getXML(s=args.s))
     else:
         parser.print_help()
