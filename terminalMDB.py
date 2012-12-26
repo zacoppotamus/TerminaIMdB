@@ -2,14 +2,14 @@
 
 import urllib
 import argparse
+import sys
 from xml.etree import ElementTree
-from sys import exit
 
 
-def retrieveMovie(title, isID):
+def retrieveMovie(title, is_ID):
     title = urllib.quote(title.encode("utf8"))
-    if isID==True:
-        URL="http://www.omdbapi.com/?r=xml&plot=full&i=%s" % title
+    if is_ID:
+        URL = "http://www.omdbapi.com/?r=xml&plot=full&i=%s" % title
     else:
         URL = "http://www.omdbapi.com/?r=xml&plot=full&t=%s" % title
     xml = ElementTree.parse(urllib.urlopen(URL))
@@ -17,7 +17,7 @@ def retrieveMovie(title, isID):
     for A in xml.iter('root'):
         if (A.get('response') == 'False'):
             print "Movie not found!"
-            exit()
+            sys.exit()
     xml = xml.getroot()
     printInfo(xml)
     return xml
@@ -38,8 +38,10 @@ def movieSearch(title):
 def printInfo(xml):
     for B in xml.findall('movie'):
         print "\n%s (%s) || %s || %s\n" % (B.get('title'), B.get('year'),
-                                           B.get('runtime'), B.get('imdbRating'))
-        print "Director: %s\nActors: %s\n" % (B.get('director'), B.get('actors'))
+                                           B.get('runtime'),
+                                           B.get('imdbRating'))
+        print "Director: %s\nActors: %s\n" % (B.get('director'),
+                                              B.get('actors'))
         print "%s\n" % (B.get('plot'))
 
 if __name__ == '__main__':
