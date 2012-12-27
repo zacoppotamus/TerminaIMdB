@@ -39,10 +39,10 @@ def movieSearch(xml):
 def printInfo(xml):
     for movie in xml.findall('movie'):
         print "{nl}{0} ({1}) || {2} || {3} || {4}{nl}".decode('utf-8').format(movie.get('title'), movie.get('year'),
-                                                              movie.get('runtime'),
-                                                              movie.get('imdbRating'),
-                                                              movie.get('imdbID'),
-                                                              nl='\n')
+                                                                              movie.get('runtime'),
+                                                                              movie.get('imdbRating'),
+                                                                              movie.get('imdbID'),
+                                                                              nl='\n')
         print "Director: {0}{nl}Actors: {1}{nl}".decode('utf-8').format(movie.get('director'),
                                                                         movie.get('actors'), nl='\n')
         print movie.get('plot'), '\n'
