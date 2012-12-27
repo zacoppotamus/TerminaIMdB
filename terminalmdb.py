@@ -43,7 +43,8 @@ def printInfo(xml):
                                                               movie.get('imdbRating'),
                                                               movie.get('imdbID'),
                                                               nl='\n')
-        print "Director: {0}{nl}Actors: {1}{nl}".decode('utf-8').format(movie.get('director'), movie.get('actors'), nl='\n').encode('utf-8')
+        print "Director: {0}{nl}Actors: {1}{nl}".decode('utf-8').format(movie.get('director'),
+                                                                        movie.get('actors'), nl='\n')
         print movie.get('plot'), '\n'
 
 
