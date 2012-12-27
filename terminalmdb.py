@@ -32,8 +32,7 @@ def retrieveMovie(xml):
 def movieSearch(xml):
     xml = xml.getroot()
     for movie in xml.findall('Movie'):
-        apicall = retrieveMovie(getXML(i=movie.get('imdbID')))
-    return xml
+        retrieveMovie(getXML(i=movie.get('imdbID')))
 
 
 def printInfo(xml):
