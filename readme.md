@@ -1,6 +1,6 @@
 #TerminalMdB#
 
-**TerminalMdB** (http://pypi.python.org/pypi/terminalmdb/0.0.2) is a *NIX command-line interface for the IMdB. It makes use of the excellent API over at www.omdbapi.com to retrieve
+**TerminalMdB** (http://pypi.python.org/pypi/terminalmdb/0.0.3) is a *NIX command-line interface for the IMdB. It makes use of the excellent API over at www.omdbapi.com to retrieve
 basic movie information.
 
 ##Usage
@@ -17,7 +17,7 @@ TerminalMDB can be used with one of three flags:
 
 ```imdb -t "foo" => search by title and return first result```
 
-```imdb -i "tt0066921" => search by id and return the result```
+```imdb -i "tt0066921" => search by id and return the result``` (new in version 0.0.3)
 
 ```imdb -s "bar" => search by title and return all results```
 
