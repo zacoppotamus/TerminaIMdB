@@ -31,8 +31,8 @@ def retrieveMovie(xml):
 # Search for movie and return plot for all the results
 def movieSearch(xml):
     xml = xml.getroot()
-    for B in xml.findall('Movie'):
-        apicall = retrieveMovie(getXML(i=B.get('imdbID')))
+    for movie in xml.findall('Movie'):
+        apicall = retrieveMovie(getXML(i=movie.get('imdbID')))
     return xml
 
 
