@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import urllib
 import argparse
@@ -19,8 +19,8 @@ def getXML(**url_args):
 
 def retrieveMovie(xml):
     # fall back to movie search if no movie is found
-    for A in xml.iter('root'):
-        if (A.get('response') == 'False'):
+    for node in xml.iter('root'):
+        if node.get('response') == 'False':
             print "Movie not found!"
             sys.exit()
         else:
@@ -37,19 +37,18 @@ def movieSearch(xml):
 
 
 def printInfo(xml):
-    for B in xml.findall('movie'):
-        print "\n%s (%s) || %s || %s || %s\n" % (B.get('title'), B.get('year'),
-                                                 B.get('runtime'),
-                                                 B.get('imdbRating'),
-                                                 B.get('imdbID'))
-        print "Director: %s\nActors: %s\n" % (B.get('director'),
-                                              B.get('actors'))
-        print "%s\n" % (B.get('plot'))
+    for movie in xml.findall('movie'):
+        print "{nl}{0} ({1}) || {2} || {3} || {4}{nl}".format(movie.get('title'), movie.get('year'),
+                                                       movie.get('runtime'),
+                                                       movie.get('imdbRating'),
+                                                       movie.get('imdbID'),
+                                                       nl='\n')
+        print "Director: {0}{nl}Actors: {1}{nl}".format(movie.get('director'), movie.get('actors'), nl='\n')
+        print movie.get('plot'), '\n'
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description='Command-Line Interface for the IMdB')
+def main():
+    parser = argparse.ArgumentParser(description='Command-Line Interface for the IMdB')
 
     parser.add_argument("-t", help="Search by title. Return first result")
     parser.add_argument("-i", help="Search by id")
@@ -65,3 +64,7 @@ if __name__ == '__main__':
         movieSearch(getXML(s=args.s))
     else:
         parser.print_help()
+
+
+if __name__ == '__main__':
+    main()
