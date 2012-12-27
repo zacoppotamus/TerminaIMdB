@@ -7,7 +7,7 @@ DIR=os.path.dirname(__file__)
 
 setup(
     name='terminalmdb',
-    version='0.0.2',
+    version='0.0.3',
     description='CLI for IMDB',
     long_description=open(os.path.join(DIR, 'readme.md')).read(),
     author='Zac Ioannidis',
