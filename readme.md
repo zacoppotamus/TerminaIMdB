@@ -13,9 +13,11 @@ Or preferably use [pip](http://www.pip-installer.org/en/latest/installing.html):
 
 ```pip install terminalmdb```
 
-TerminalMDB can be used with one of two flags:
+TerminalMDB can be used with one of three flags:
 
 ```imdb -t "foo" => search by title and return first result```
+
+```imdb -i "tt0066921" => search by id and return the result```
 
 ```imdb -s "bar" => search by title and return all results```
 
